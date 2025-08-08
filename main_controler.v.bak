@@ -1,0 +1,14 @@
+
+
+
+module main_Controler(
+	 input  wire [6:0] opcode,
+    output reg        RegWrite,
+    output reg        MemRead,
+    output reg        MemWrite,
+    output reg        MemtoReg,
+    output reg        Branch,
+    output reg        ALUSrc,
+    output reg        Jump,
+    output reg  [1:0] ALUOp
+)

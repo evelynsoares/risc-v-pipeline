@@ -1,0 +1,31 @@
+DEPTH = 16384;
+WIDTH = 32;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+CONTENT
+BEGIN
+00000000 : 100101b7;   % 5: 	li gp,0x10010000 # gp = 0x10010000 %
+00000001 : 00018193;   % 5:  %
+00000002 : 00400313;   % 6: 	addi t1, zero, 4 # t1 = 4  %
+00000003 : 0001a383;   % 7: 	lw t2, 0(gp) # t2 = 1 %
+00000004 : 00038293;   % 8: 	addi t0, t2, 0  #t0 = 1 %
+00000005 : 006282b3;   % 9: 	add t0, t0, t1 # t0 = 5  %
+00000006 : 406282b3;   % 10: 	sub t0, t0, t1 # t0  = 1 %
+00000007 : 005322b3;   % 11: 	slt t0, t1, t0 # t0 = 0 %
+00000008 : 0072e2b3;   % 12: 	or t0, t0, t2 # t0 = 1 %
+00000009 : 0002f2b3;   % 13: 	and t0, t0, zero # t0 = 0 %
+0000000a : 00628863;   % 14: 	beq t0, t1, exit # Não Pula só pra testar %
+0000000b : 00000013;   % 15: 	nop  %
+0000000c : 00028c63;   % 16: 	beq t0, zero, pula # pula para "pula"  %
+0000000d : 00000013;   % 17: 	nop %
+0000000e : 000080e7;   % 19: 	jalr ra, ra, 0 # pula para o endereco salvo em ra %
+0000000f : 00000013;   % 20: 	nop %
+00000010 : 00000013;   % 21: 	nop %
+00000011 : 00000013;   % 22: 	nop %
+00000012 : ff1ff0ef;   % 24: 	jal ra, exit # pula para o label exit e salva o endereco em ra %
+00000013 : 00000013;   % 25: 	nop %
+00000014 : 00000013;   % 26: 	nop %
+00000015 : 00000013;   % 27: 	nop %
+00000016 : 00a30293;   % 28: 	addi t0,t1, 10 # t0 = 14 %
+00000017 : 0051a223;   % 29: 	sw t0, 4(gp) # armazena o t0(14) em gp+4 %
+END;

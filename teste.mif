@@ -1,0 +1,30 @@
+Address     Code        Basic                        Line Source
+
+0x00400000  0x100101b7  lui x3,65552                 5    	li gp,0x10010000 # gp = 0x10010000
+0x00400004  0x00018193  addi x3,x3,0                      
+0x00400008  0x00400313  addi x6,x0,4                 6    	addi t1, zero, 4 # t1 = 4 
+0x0040000c  0x0001a383  lw x7,0(x3)                  7    	lw t2, 0(gp) # t2 = 1
+0x00400010  0x00038293  addi x5,x7,0                 8    	addi t0, t2, 0  #t0 = 1
+0x00400014  0x006282b3  add x5,x5,x6                 9    	add t0, t0, t1 # t0 = 5 
+0x00400018  0x406282b3  sub x5,x5,x6                 10   	sub t0, t0, t1 # t0  = 1
+0x0040001c  0x005322b3  slt x5,x6,x5                 11   	slt t0, t1, t0 # t0 = 0
+0x00400020  0x0072e2b3  or x5,x5,x7                  12   	or t0, t0, t2 # t0 = 1
+0x00400024  0x0002f2b3  and x5,x5,x0                 13   	and t0, t0, zero # t0 = 0
+0x00400028  0x02628063  beq x5,x6,32                 14   	beq t0, t1, exit # Não Pula só pra testar
+0x0040002c  0x00000013  addi x0,x0,0                 15   	nop
+0x00400030  0x00000013  addi x0,x0,0                 16   	nop
+0x00400034  0x00000013  addi x0,x0,0                 17   	nop
+0x00400038  0x02028063  beq x5,x0,32                 18   	beq t0, zero, pula # pula para "pula" 
+0x0040003c  0x00000013  addi x0,x0,0                 19   	nop
+0x00400040  0x00000013  addi x0,x0,0                 20   	nop
+0x00400044  0x00000013  addi x0,x0,0                 21   	nop
+0x00400048  0x00008067  jalr x0,x1,0                 23   	jalr zero, ra, 0 # pula para o endereÃ§o salvo em ra
+0x0040004c  0x00000013  addi x0,x0,0                 24   	nop
+0x00400050  0x00000013  addi x0,x0,0                 25   	nop
+0x00400054  0x00000013  addi x0,x0,0                 26   	nop
+0x00400058  0xff1ff0ef  jal x1,-16                   29   	jal ra, exit # pula para o label exit e salva o endereco em ra
+0x0040005c  0x00000013  addi x0,x0,0                 30   	nop
+0x00400060  0x00000013  addi x0,x0,0                 31   	nop
+0x00400064  0x00000013  addi x0,x0,0                 32   	nop
+0x00400068  0x00a30293  addi x5,x6,10                33   	addi t0,t1, 10 # t0 = 14
+0x0040006c  0x0051a223  sw x5,4(x3)                  34   	sw t0, 4(gp) # armazena o t0(14) em gp+4
